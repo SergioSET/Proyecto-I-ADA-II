@@ -15,56 +15,46 @@ for i in range(n + 1):
     tupla = (int(p), int(max), int(min))
     ofertas += tuple([tupla])
 
+def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple[oferta]):
 
-def fuerzaBruta(A: int, B: int, n: int, ofertas: tuple[oferta]):
+    def valor(asignaciones: tuple[tuple], ofertas: tuple[oferta]):
+        for i, oferta in enumerate(ofertas):
+            val = 0
+            val += (oferta[0] * asignaciones[i])
+            # print("asig:" , asignaciones[i], " valor: ", val)
+        return val
 
-    # une la asignacion recibida a cada asignacion de la tupla recibida
-    def productoCartElemento(element: asignacion,
-                             tupla: asignaciones) -> asignaciones:
-        return tuple(element + element2 for element2 in tupla)
+    def calculo(A,B,n,ofertas):
+        asignaciones = []
+        for oferta in ofertas:
+            accion = 0
+            if (oferta[2] <= A):
+                A -= oferta[2]
+                accion = oferta[2]
+                while (accion < oferta[1] and A):
+                    A -= 1
+                    accion += 1
+            asignaciones.append(accion)
+        return asignaciones, valor(asignaciones, ofertas)
 
-    # calcula el valor de la asignacion de acciones recibida como parametro
-    def valorAsig(asignacion: tuple[int]):
-        resultado = 0
-        for i, cantAcciones in enumerate(asignacion):
-            resultado += cantAcciones * ofertas[i][0]
-        return resultado
+            # if (A >= oferta[1]):
+            #     A -= oferta[1]
+            #     asignaciones.append(oferta[1])
+            #     print(A)
+            #     print(asignaciones)
+            # elif (oferta[1]>=A<=oferta[2]):
+            #     acciones = 0
+            #     while (A >= oferta[2]):
+            #         A -= 1
+            #         acciones += 1
+            #     asignaciones.append(acciones)
+            # else:
+            #     asignaciones.append(0)
 
-    def licitacion(A: int, B: int, n: int,
-                   ofertas: tuple[oferta]) -> asignaciones:
-        p, max, min = ofertas[0]
-
-        def noIncluirOfertaActual() -> asignaciones:
-            return productoCartElemento((0, ),
-                                        licitacion(A, B, n - 1, ofertas[1:]))
-
-        def incluirOfertaActual(cantA=min) -> asignaciones:
-            if cantA == max or cantA == A:
-                return productoCartElemento((cantA, ),
-                                            licitacion(A - cantA, B, n - 1,
-                                                       ofertas[1:]))
-            else:
-                return productoCartElemento(
-                    (cantA, ), licitacion(
-                        A - cantA, B, n - 1,
-                        ofertas[1:])) + incluirOfertaActual(cantA + 1)
-
-        if n == 0:
-            return ((A, ), )
-        elif A >= min:
-            return noIncluirOfertaActual() + incluirOfertaActual()
-        else:
-            return noIncluirOfertaActual()
-
-    soluciones = licitacion(A, B, n, ofertas)
-    valorSoluciones = map(valorAsig, soluciones)
-    pos, maxValor = 0, A * B
-    for index, valor in enumerate(valorSoluciones):
-        if valor > maxValor:
-            pos, maxValor = index, valor
-    return soluciones[pos], valorAsig(soluciones[pos])
-    # return licitacion(A, B, n, ofertas)
-
+    if n == 0:
+        return [A], B * A
+    else:
+        return calculo(A,B,n,ofertas)
 
 # Confirmación de datos
 print(A)
@@ -73,23 +63,11 @@ print(n)
 print(ofertas)
 print("\n")
 
-
-def accionesFB():
+def accionesVoraz():
     with open("output.txt", 'w') as write_file:
-        solucion, valorSolucion = fuerzaBruta(A, B, n, ofertas)
+        solucion, valorSolucion = estrategiaVoraz(A, B, n, ofertas)
         write_file.write("{0}\n".format(valorSolucion))
         for asig in solucion:
             write_file.write("{0}\n".format(asig))
 
-
-accionesFB()
-# print(all(map(lambda x: sum(x)==1000, fuerzaBruta(A, B, n, ofertas))))
-# with open("output.txt", 'w') as write_file:
-#     for line in fuerzaBruta(A, B, n, ofertas):
-#         if type(line) != type(tuple((1,))):
-#             print(line, type(line),type(tuple) )
-#             break
-#         write_file.write("{0}\n".format(line))
-
-# Ejecución del algoritmo de fuerza bruta
-# fuerzaBruta(A, B, n, ofertas)
+accionesVoraz()
