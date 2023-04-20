@@ -1,19 +1,20 @@
 import sys
 import os
 import time
+from typing import Tuple
 
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ''))
 sys.path.insert(0, root_dir)
 
-from mainAntiguo import *
+from main import *
 
 if __name__ == '__main__':
     main()
 
-def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple[oferta]):
-    asignacion = tuple[int]
-    asignaciones = tuple[asignacion]
-    def valor(asignaciones: tuple[tuple], ofertas: tuple[oferta]):
+def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple):
+    asignacion = tuple
+    asignaciones = tuple
+    def valor(asignaciones: tuple, ofertas: tuple):
         val = 0
         for i, oferta in enumerate(ofertas):
             val += (oferta[0] * asignaciones[i])
@@ -52,9 +53,11 @@ def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple[oferta]):
     else:
         return calculo(A,B,n,ofertas)
 
-def accionesVoraz():
+def accionesVoraz(A: int, B: int, n: int, ofertas: tuple):
+    print("Se iniciará el algoritmo voraz")
     with open("outputVoraz.txt", 'w') as write_file:
         solucion, valorSolucion = estrategiaVoraz(A, B, n, ofertas)
         write_file.write("{0}\n".format(valorSolucion))
         for asig in solucion:
             write_file.write("{0}\n".format(asig))
+    print("Se ha finalizado el algoritmo voraz, revise el archivo outputVoraz.txt para ver los resultados")
