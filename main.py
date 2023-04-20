@@ -18,8 +18,8 @@ for i in range(n + 1):
 def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple[oferta]):
 
     def valor(asignaciones: tuple[tuple], ofertas: tuple[oferta]):
+        val = 0
         for i, oferta in enumerate(ofertas):
-            val = 0
             val += (oferta[0] * asignaciones[i])
             # print("asig:" , asignaciones[i], " valor: ", val)
         return val
