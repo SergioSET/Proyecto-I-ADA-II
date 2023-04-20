@@ -50,11 +50,11 @@ def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple[oferta]):
     else:
         return calculo(A,B,n,ofertas)
 
-    def accionesVoraz():
-        with open("outputVoraz.txt", 'w') as write_file:
-            solucion, valorSolucion = estrategiaVoraz(A, B, n, ofertas)
-            write_file.write("{0}\n".format(valorSolucion))
-            for asig in solucion:
-                write_file.write("{0}\n".format(asig))
+def accionesVoraz():
+    with open("outputVoraz.txt", 'w') as write_file:
+        solucion, valorSolucion = estrategiaVoraz(A, B, n, ofertas)
+        write_file.write("{0}\n".format(valorSolucion))
+        for asig in solucion:
+            write_file.write("{0}\n".format(asig))
 
-    accionesVoraz()
+accionesVoraz()
