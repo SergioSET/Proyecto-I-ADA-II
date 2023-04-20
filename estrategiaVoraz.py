@@ -32,21 +32,21 @@ def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple):
     #         asignaciones.append(accion)
     #     return asignaciones, valor(asignaciones, ofertas)
 
-    # def calculo(A, B, n, ofertas):
-    #     asignaciones = []
-    #     for oferta in ofertas:
-    #         accion = 0
-    #         # if (oferta[2] <= A >= oferta[1]):
-
-    #         if (oferta[2] <= A):
-    #             if (oferta[1] >= A):
-    #                 A -= oferta[1]
-    #                 accion = oferta[1]
-    #             else:
-    #                 A -= oferta[2]
-    #                 accion = oferta[2]
-    #         asignaciones.append(accion)
-    #     return asignaciones, valor(asignaciones, ofertas)
+    def calculo(A, B, n, ofertas):
+        asignaciones = []
+        for oferta in ofertas:
+            accion = 0
+            if oferta[2] <= A:
+                accion = oferta[2]
+                A -= oferta[2]
+                if oferta[1] - oferta[2] <= A:
+                    accion += oferta[1] - oferta[2]
+                    A -= oferta[1] - oferta[2]
+                else:
+                    accion += A
+                    A = 0
+            asignaciones.append(accion)
+        return asignaciones, valor(asignaciones, ofertas)
 
     if n == 0:
         return [A], B * A
