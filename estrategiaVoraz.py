@@ -5,12 +5,14 @@ import time
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ''))
 sys.path.insert(0, root_dir)
 
-from main import *
+from mainAntiguo import *
 
 if __name__ == '__main__':
     main()
 
 def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple[oferta]):
+    asignacion = tuple[int]
+    asignaciones = tuple[asignacion]
     def valor(asignaciones: tuple[tuple], ofertas: tuple[oferta]):
         val = 0
         for i, oferta in enumerate(ofertas):
@@ -56,5 +58,3 @@ def accionesVoraz():
         write_file.write("{0}\n".format(valorSolucion))
         for asig in solucion:
             write_file.write("{0}\n".format(asig))
-
-accionesVoraz()
