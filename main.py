@@ -17,8 +17,8 @@ def main():
 
     print("Acciones en venta " ,A)
     print("Precio minímo por acción ", B)
-    print("Número de ofertantes ", n)
-    print("Lista de ofertantes ", ofertas, "\n")
+    print("Número de oferente ", n)
+    print("Lista de oferentes incluyendo gobierno ", ofertas, "\n")
 
     algoritmo = int(input("¿Qué tipo de algoritmo desea utilizar?\n(1) Estrategia de Fuerza Bruta\n(2) Estrategia Voraz\n(3) Estrategia de Programación dinamica\n"))
     
