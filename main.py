@@ -1,9 +1,6 @@
-from os import system
-
 def main():
     input = open("input.txt", 'r')
-    
-
+     
     A = int(input.readline())
     B = int(input.readline())
     n = int(input.readline())
@@ -15,18 +12,16 @@ def main():
         tupla = (int(p), int(max), int(min))
         ofertas += tuple([tupla])
 
-    print(A)
-    print(B)
-    print(n)
-    print(ofertas, "\n")
+    print("Acciones en venta " ,A)
+    print("Precio minímo por acción ", B)
+    print("Número de ofertantes ", n)
+    print("Lista de ofertantes ", ofertas, "\n")
 
-    algoritmo = input('Hola')
-    # algoritmo = input("¿Qué tipo de algoritmo desea utilizar?",
-    # "\n", "(1) Estrategia de Fuerza Bruta",
-    # "\n", "(2) Estrategia Voraz",
-    # "\n", "(3) Estrategia de Programación dinamica")
-    print(algoritmo)
+    # algoritmo = input("¿Qué tipo de algoritmo desea utilizar?")
+    # # "\n", "(1) Estrategia de Fuerza Bruta",
+    # # "\n", "(2) Estrategia Voraz",
+    # # "\n", "(3) Estrategia de Programación dinamica")
+    # print(algoritmo)
 
-
-if __name__ == '__main__':
+if __name__ == '__main__':    
     main()
