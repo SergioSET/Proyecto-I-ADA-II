@@ -1,54 +1,58 @@
+from main import *
 import sys
 import os
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ''))
 sys.path.insert(0, root_dir)
 
-from main import *
 
 if __name__ == '__main__':
     main()
 
+
 def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple):
     asignacion = tuple
     asignaciones = tuple
+
     def valor(asignaciones: tuple, ofertas: tuple):
         val = 0
         for i, oferta in enumerate(ofertas):
             val += (oferta[0] * asignaciones[i])
-            # print("asig:" , asignaciones[i], " valor: ", val)
         return val
 
-    def calculo(A,B,n,ofertas):
-        asignaciones = []
-        for oferta in ofertas:
-            accion = 0
-            if (oferta[2] <= A):
-                A -= oferta[2]
-                accion = oferta[2]
-                while (accion < oferta[1] and A):
-                    A -= 1
-                    accion += 1
-            asignaciones.append(accion)
-        return asignaciones, valor(asignaciones, ofertas)
+    # def calculo(A, B, n, ofertas):
+    #     asignaciones = []
+    #     for oferta in ofertas:
+    #         accion = 0
+    #         if (oferta[2] <= A):
+    #             A -= oferta[2]
+    #             accion = oferta[2]
+    #             while (accion < oferta[1] and A):
+    #                 A -= 1
+    #                 accion += 1
+    #         asignaciones.append(accion)
+    #     return asignaciones, valor(asignaciones, ofertas)
 
-            # if (A >= oferta[1]):
-            #     A -= oferta[1]
-            #     asignaciones.append(oferta[1])
-            #     print(A)
-            #     print(asignaciones)
-            # elif (oferta[1]>=A<=oferta[2]):
-            #     acciones = 0
-            #     while (A >= oferta[2]):
-            #         A -= 1
-            #         acciones += 1
-            #     asignaciones.append(acciones)
-            # else:
-            #     asignaciones.append(0)
+    # def calculo(A, B, n, ofertas):
+    #     asignaciones = []
+    #     for oferta in ofertas:
+    #         accion = 0
+    #         # if (oferta[2] <= A >= oferta[1]):
+
+    #         if (oferta[2] <= A):
+    #             if (oferta[1] >= A):
+    #                 A -= oferta[1]
+    #                 accion = oferta[1]
+    #             else:
+    #                 A -= oferta[2]
+    #                 accion = oferta[2]
+    #         asignaciones.append(accion)
+    #     return asignaciones, valor(asignaciones, ofertas)
 
     if n == 0:
         return [A], B * A
     else:
-        return calculo(A,B,n,ofertas)
+        return calculo(A, B, n, ofertas)
+
 
 def accionesVoraz(A: int, B: int, n: int, ofertas: tuple):
     print("Se iniciará el algoritmo voraz")

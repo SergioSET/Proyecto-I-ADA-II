@@ -1,28 +1,29 @@
+from main import *
 import sys
 import os
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ''))
 sys.path.insert(0, root_dir)
 
-from main import *
 
 if __name__ == '__main__':
     main()
 
+
 def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     asignacion = tuple
     asignaciones = tuple
-  
-    #une la asignacion recibida a cada asignacion de la tupla recibida  
-    def productoCartElemento(element: asignacion, tupla: asignaciones)->asignaciones:
-      return tuple(element + element2 for element2 in tupla)
 
-    #calcula el valor de la asignacion de acciones recibida como parametro
+    # une la asignacion recibida a cada asignacion de la tupla recibida
+    def productoCartElemento(element: asignacion, tupla: asignaciones) -> asignaciones:
+        return tuple(element + element2 for element2 in tupla)
+
+    # calcula el valor de la asignacion de acciones recibida como parametro
     def valorAsig(asignacion: tuple[int]):
         resultado = 0
         for i, cantAcciones in enumerate(asignacion):
             resultado += cantAcciones * ofertas[i][0]
         return resultado
-    
+
     def licitacion(A: int, B: int, n: int, ofertas: tuple) -> asignaciones:
         p, c, r = ofertas[0]
 
@@ -30,7 +31,7 @@ def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
             return productoCartElemento((0,), licitacion(A, B, n - 1, ofertas[1:]))
 
         def incluirOfertaActual() -> asignaciones:
-             return productoCartElemento((c,), licitacion(A-c, B, n - 1, ofertas[1:]))
+            return productoCartElemento((c,), licitacion(A-c, B, n - 1, ofertas[1:]))
 
         if n == 0:
             return ((A,),)
@@ -56,14 +57,14 @@ def accionesFB(A: int, B: int, n: int, ofertas: tuple):
             write_file.write("{0}\n".format(asig))
 
 
-#accionesFB()
+# accionesFB()
 def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     print("Se iniciará el algoritmo voraz")
-    print(all(map(lambda x: sum(x)==1000, estrategiaFuerzaBruta(A, B, n, ofertas))))
+    print(all(map(lambda x: sum(x) == 1000, estrategiaFuerzaBruta(A, B, n, ofertas))))
     with open("outputFuerzaBruta.txt", 'w') as write_file:
         for line in estrategiaFuerzaBruta(A, B, n, ofertas):
             write_file.write("{0}\n".format(line))
-    
+
     print("Se ha finalizado el algoritmo de Fuerza Bruta, revise el archivo outputFuerzaBruta.txt para ver los resultados")
 
 # Ejecución del algoritmo de fuerza bruta

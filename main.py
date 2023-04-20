@@ -1,10 +1,11 @@
 from os import system
-import estrategiaVoraz as voraz;
-import estrategiaFuerzaBruta as fuerzaBruta;
+import estrategiaVoraz as voraz
+import estrategiaFuerzaBruta as fuerzaBruta
+
 
 def main():
     inputTxt = open("input.txt", 'r')
-     
+
     A = int(inputTxt.readline())
     B = int(inputTxt.readline())
     n = int(inputTxt.readline())
@@ -17,21 +18,23 @@ def main():
         ofertas += tuple([tupla])
 
     system("cls")
-    print("Acciones en venta " ,A)
+    print("Acciones en venta ", A)
     print("Precio minímo por acción ", B)
     print("Número de oferente ", n)
     print("Lista de oferentes incluyendo gobierno ", ofertas, "\n")
 
-    algoritmo = int(input("¿Qué tipo de algoritmo desea utilizar?\n(1) Estrategia de Fuerza Bruta\n(2) Estrategia Voraz\n(3) Estrategia de Programación dinamica\n"))
-    
+    algoritmo = int(input(
+        "¿Qué tipo de algoritmo desea utilizar?\n(1) Estrategia de Fuerza Bruta\n(2) Estrategia Voraz\n(3) Estrategia de Programación dinamica\n"))
+
     if (algoritmo == 1):
         fuerzaBruta.accionesFuerzaBruta(A, B, n, ofertas)
-    elif(algoritmo == 2):
+    elif (algoritmo == 2):
         voraz.accionesVoraz(A, B, n, ofertas)
-    elif(algoritmo == 3):
+    elif (algoritmo == 3):
         print("Estrategia de programación dinámica no disponible")
     else:
         print("Opción no válida")
-    
-if __name__ == '__main__':    
+
+
+if __name__ == '__main__':
     main()
