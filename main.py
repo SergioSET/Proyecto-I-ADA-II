@@ -1,3 +1,5 @@
+import estrategiaVoraz as voraz;
+
 def main():
     inputTxt = open("input.txt", 'r')
      
@@ -17,8 +19,16 @@ def main():
     print("Número de ofertantes ", n)
     print("Lista de ofertantes ", ofertas, "\n")
 
-    algoritmo = input("¿Qué tipo de algoritmo desea utilizar?\n(1) Estrategia de Fuerza Bruta\n(2) Estrategia Voraz\n(3) Estrategia de Programación dinamica\n")
+    algoritmo = int(input("¿Qué tipo de algoritmo desea utilizar?\n(1) Estrategia de Fuerza Bruta\n(2) Estrategia Voraz\n(3) Estrategia de Programación dinamica\n"))
     
-
+    if (algoritmo == 1):
+        print("Estrategia de fuerza bruta no disponible")
+    elif(algoritmo == 2):
+        voraz.accionesVoraz(A, B, n, ofertas)
+    elif(algoritmo == 3):
+        print("Estrategia de programación dinámica no disponible")
+    else:
+        print("Opción no válida")
+    
 if __name__ == '__main__':    
     main()
