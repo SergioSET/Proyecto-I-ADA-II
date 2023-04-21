@@ -1,13 +1,9 @@
 from main import *
-import sys
-import os
 import time
-
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ''))
-sys.path.insert(0, root_dir)
 
 if __name__ == '__main__':
     main()
+
 
 def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     asignacion = tuple
@@ -66,7 +62,8 @@ def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
         for line in estrategiaFuerzaBruta(A, B, n, ofertas):
             write_file.write("{0}\n".format(line))
     fin = time.time()
-    print("Se ha finalizado el algoritmo de Fuerza Bruta con un tiempo de ejecución: ", fin-inicio, " segundos, revise el archivo outputFuerzaBruta.txt para ver los resultados")
+    print("Tiempo de ejecución: ", fin-inicio, " segundos")
+    print("Se ha finalizado el algoritmo de Fuerza Bruta, revise el archivo outputFuerzaBruta.txt para ver los resultados")
 
 # Ejecución del algoritmo de fuerza bruta
 # fuerzaBruta(A, B, n, ofertas)

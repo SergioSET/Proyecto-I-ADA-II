@@ -1,12 +1,9 @@
 from main import *
-import sys
-import os
 import time
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ''))
-sys.path.insert(0, root_dir)
 
 if __name__ == '__main__':
     main()
+
 
 def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple):
     asignacion = tuple
@@ -62,4 +59,5 @@ def accionesVoraz(A: int, B: int, n: int, ofertas: tuple):
         for asig in solucion:
             write_file.write("{0}\n".format(asig))
     fin = time.time()
-    print("Se ha finalizado el algoritmo de Estrategia Voraz con un tiempo de ejecución: ", fin-inicio, " segundos, revise el archivo outputVoraz.txt para ver los resultados")
+    print("Tiempo de ejecución: ", fin - inicio, " segundos")
+    print("Se ha finalizado el algoritmo de Estrategia Voraz, revise el archivo outputVoraz.txt para ver los resultados")

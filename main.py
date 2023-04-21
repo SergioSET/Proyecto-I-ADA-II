@@ -17,7 +17,7 @@ def main():
         tupla = (int(p), int(max), int(min))
         ofertas += tuple([tupla])
 
-    system("clear")
+    system("cls")
     print("Acciones en venta ", A)
     print("Precio minímo por acción ", B)
     print("Número de oferente ", n)
@@ -26,6 +26,7 @@ def main():
     algoritmo = int(input(
         "¿Qué tipo de algoritmo desea utilizar?\n(1) Estrategia de Fuerza Bruta\n(2) Estrategia Voraz\n(3) Estrategia de Programación dinamica\n"))
 
+    system("cls")
     if (algoritmo == 1):
         fuerzaBruta.accionesFuerzaBruta(A, B, n, ofertas)
     elif (algoritmo == 2):
