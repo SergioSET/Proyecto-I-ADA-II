@@ -12,12 +12,12 @@ def main():
     ofertas = ()
 
     # Se crea una tupla de tuplas leyendo el archivo inputTxt.txt
-    for i in range(n):
+    for i in range(n + 1):
         p, max, min = inputTxt.readline().split(sep=',')
         tupla = (int(p), int(max), int(min))
         ofertas += tuple([tupla])
 
-    system("cls")
+    system("clear")
     print("Acciones en venta ", A)
     print("Precio minímo por acción ", B)
     print("Número de oferente ", n)

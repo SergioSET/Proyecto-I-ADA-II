@@ -1,13 +1,13 @@
 from main import *
 import sys
 import os
+import time
+
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ''))
 sys.path.insert(0, root_dir)
 
-
 if __name__ == '__main__':
     main()
-
 
 def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     asignacion = tuple
@@ -59,13 +59,14 @@ def accionesFB(A: int, B: int, n: int, ofertas: tuple):
 
 # accionesFB()
 def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
-    print("Se iniciará el algoritmo voraz")
+    print("Se iniciará el algoritmo de Fuerza Bruta")
+    inicio = time.time()
     print(all(map(lambda x: sum(x) == 1000, estrategiaFuerzaBruta(A, B, n, ofertas))))
     with open("outputFuerzaBruta.txt", 'w') as write_file:
         for line in estrategiaFuerzaBruta(A, B, n, ofertas):
             write_file.write("{0}\n".format(line))
-
-    print("Se ha finalizado el algoritmo de Fuerza Bruta, revise el archivo outputFuerzaBruta.txt para ver los resultados")
+    fin = time.time()
+    print("Se ha finalizado el algoritmo de Fuerza Bruta con un tiempo de ejecución: ", fin-inicio, " segundos, revise el archivo outputFuerzaBruta.txt para ver los resultados")
 
 # Ejecución del algoritmo de fuerza bruta
 # fuerzaBruta(A, B, n, ofertas)
