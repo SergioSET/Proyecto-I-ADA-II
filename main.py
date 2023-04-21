@@ -28,10 +28,6 @@ def main():
                                      'Estrategia de Programación dinámica'),
                             image="images/dynamic_programming.jpg",)
 
-    # algo = {'Estrategia de Fuerza Bruta': 1, 'Estrategia Voraz': 2,
-    #         'Estrategia de Programación dinámica': 3}
-    # algoritmo = algo.get(algoritmo, 0)
-
     if (algoritmo == 0):
         fuerzaBruta.accionesFuerzaBruta(A, B, n, ofertas)
     elif (algoritmo == 1):

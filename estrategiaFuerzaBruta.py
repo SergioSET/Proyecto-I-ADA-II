@@ -68,7 +68,7 @@ def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     fin = time.time()
     eg.msgbox(msg='Tiempo de ejecución del algoritmo Fuerza Bruta: ' + str(
         fin - inicio) + ' segundos\n\nSe ha finalizado el algoritmo de Fuerza Bruta, se abrirá el archivo outputFuerzaBruta.txt con la solución encontrada',
-              title='Programación de venta de acciones',
-              ok_button='Continuar',
-              image="images/dynamic_programming.jpg", )
+        title='Programación de venta de acciones',
+        ok_button='Continuar',
+        image="images/dynamic_programming.jpg", )
     os.startfile("outputFuerzaBruta.txt", operation='open')
