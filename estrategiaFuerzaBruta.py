@@ -1,17 +1,19 @@
-from main import *
-import time
-import easygui as eg
 import os
+import time
+
+import easygui as eg
+
+from main import *
 
 if __name__ == '__main__':
     main()
 
 
 def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
-    asignacion = tuple
-    asignaciones = tuple
+    asignacion = tuple[int]
+    asignaciones = tuple[asignacion]
 
-    # une la asignacion recibida a cada asignacion de la tupla recibida
+    # Producto cartesiano entre un elemento y un conjunto de asignaciones.
     def productoCartElemento(element: asignacion, tupla: asignaciones) -> asignaciones:
         return tuple(element + element2 for element2 in tupla)
 
@@ -29,7 +31,7 @@ def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
             return productoCartElemento((0,), licitacion(A, B, n - 1, ofertas[1:]))
 
         def incluirOfertaActual() -> asignaciones:
-            return productoCartElemento((c,), licitacion(A-c, B, n - 1, ofertas[1:]))
+            return productoCartElemento((c,), licitacion(A - c, B, n - 1, ofertas[1:]))
 
         if n == 0:
             return ((A,),)
@@ -44,7 +46,7 @@ def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     for indice, valor in enumerate(valorSoluciones):
         if valor > maxValor:
             pos, maxValor = indice, valor
-    return soluciones
+    return soluciones[pos], maxValor
 
 
 def accionesFB(A: int, B: int, n: int, ofertas: tuple):
@@ -55,22 +57,18 @@ def accionesFB(A: int, B: int, n: int, ofertas: tuple):
             write_file.write("{0}\n".format(asig))
 
 
-# accionesFB()
 def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
-    eg.msgbox(msg='Se iniciará el algoritmo de Fuerza Bruta, puede presionar el botón "Continuar", un mensaje aparecerá cuando el algoritmo haya finalizado',
-              title='Programación de venta de acciones',
-              ok_button='Continuar',
-              image="images/dynamic_programming.jpg",)
+    eg.msgbox(
+        msg='Se iniciará el algoritmo de Fuerza Bruta, puede presionar el botón "Continuar", un mensaje aparecerá cuando el algoritmo haya finalizado',
+        title='Programación de venta de acciones',
+        ok_button='Continuar',
+        image="images/dynamic_programming.jpg", )
     inicio = time.time()
-    # print(all(map(lambda x: sum(x) == 1000, estrategiaFuerzaBruta(A, B, n, ofertas))))
-    with open("outputFuerzaBruta.txt", 'w') as write_file:
-        for line in estrategiaFuerzaBruta(A, B, n, ofertas):
-            write_file.write("{0}\n".format(line))
+    accionesFB(A, B, n, ofertas)
     fin = time.time()
-    eg.msgbox(msg='Tiempo de ejecución del algoritmo Fuerza Bruta: ' + str(fin - inicio) + ' segundos\n\nSe ha finalizado el algoritmo de Fuerza Bruta, se abrirá el archivo outputFuerzaBruta.txt con la solución encontrada',
+    eg.msgbox(msg='Tiempo de ejecución del algoritmo Fuerza Bruta: ' + str(
+        fin - inicio) + ' segundos\n\nSe ha finalizado el algoritmo de Fuerza Bruta, se abrirá el archivo outputFuerzaBruta.txt con la solución encontrada',
               title='Programación de venta de acciones',
               ok_button='Continuar',
-              image="images/dynamic_programming.jpg",)
+              image="images/dynamic_programming.jpg", )
     os.startfile("outputFuerzaBruta.txt", operation='open')
-# Ejecución del algoritmo de fuerza bruta
-# fuerzaBruta(A, B, n, ofertas)
