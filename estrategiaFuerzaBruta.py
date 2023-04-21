@@ -1,5 +1,7 @@
 from main import *
 import time
+import easygui as eg
+import os
 
 if __name__ == '__main__':
     main()
@@ -55,15 +57,20 @@ def accionesFB(A: int, B: int, n: int, ofertas: tuple):
 
 # accionesFB()
 def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
-    print("Se iniciará el algoritmo de Fuerza Bruta")
+    eg.msgbox(msg='Se iniciará el algoritmo de Fuerza Bruta, puede presionar el botón "Continuar", un mensaje aparecerá cuando el algoritmo haya finalizado',
+              title='Programación de venta de acciones',
+              ok_button='Continuar',
+              image="images/dynamic_programming.jpg",)
     inicio = time.time()
-    print(all(map(lambda x: sum(x) == 1000, estrategiaFuerzaBruta(A, B, n, ofertas))))
+    # print(all(map(lambda x: sum(x) == 1000, estrategiaFuerzaBruta(A, B, n, ofertas))))
     with open("outputFuerzaBruta.txt", 'w') as write_file:
         for line in estrategiaFuerzaBruta(A, B, n, ofertas):
             write_file.write("{0}\n".format(line))
     fin = time.time()
-    print("Tiempo de ejecución: ", fin-inicio, " segundos")
-    print("Se ha finalizado el algoritmo de Fuerza Bruta, revise el archivo outputFuerzaBruta.txt para ver los resultados")
-
+    eg.msgbox(msg='Tiempo de ejecución del algoritmo Fuerza Bruta: ' + str(fin - inicio) + ' segundos\n\nSe ha finalizado el algoritmo de Fuerza Bruta, se abrirá el archivo outputFuerzaBruta.txt con la solución encontrada',
+              title='Programación de venta de acciones',
+              ok_button='Continuar',
+              image="images/dynamic_programming.jpg",)
+    os.startfile("outputFuerzaBruta.txt", operation='open')
 # Ejecución del algoritmo de fuerza bruta
 # fuerzaBruta(A, B, n, ofertas)

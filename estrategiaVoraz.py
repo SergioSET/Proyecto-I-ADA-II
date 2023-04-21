@@ -1,5 +1,7 @@
 from main import *
 import time
+import easygui as eg
+import os
 
 if __name__ == '__main__':
     main()
@@ -51,7 +53,10 @@ def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple):
 
 
 def accionesVoraz(A: int, B: int, n: int, ofertas: tuple):
-    print("Se iniciará el algoritmo voraz")
+    eg.msgbox(msg='Se iniciará el algoritmo de Estrategia Voraz, puede presionar el botón "Continuar", un mensaje aparecerá cuando el algoritmo haya finalizado',
+              title='Programación de venta de acciones',
+              ok_button='Continuar',
+              image="images/dynamic_programming.jpg",)
     inicio = time.time()
     with open("outputVoraz.txt", 'w') as write_file:
         solucion, valorSolucion = estrategiaVoraz(A, B, n, ofertas)
@@ -59,5 +64,8 @@ def accionesVoraz(A: int, B: int, n: int, ofertas: tuple):
         for asig in solucion:
             write_file.write("{0}\n".format(asig))
     fin = time.time()
-    print("Tiempo de ejecución: ", fin - inicio, " segundos")
-    print("Se ha finalizado el algoritmo de Estrategia Voraz, revise el archivo outputVoraz.txt para ver los resultados")
+    eg.msgbox(msg='Tiempo de ejecución del algoritmo voraz: ' + str(fin - inicio) + ' segundos\n\nSe ha finalizado el algoritmo de Estrategia Voraz, se abrirá el archivo outputVoraz.txt con la solución encontrada',
+              title='Programación de venta de acciones',
+              ok_button='Continuar',
+              image="images/dynamic_programming.jpg",)
+    os.startfile("outputVoraz.txt", operation='open')

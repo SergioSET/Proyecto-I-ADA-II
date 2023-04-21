@@ -1,6 +1,6 @@
-from os import system
 import estrategiaVoraz as voraz
 import estrategiaFuerzaBruta as fuerzaBruta
+import easygui as eg
 
 
 def main():
@@ -17,24 +17,30 @@ def main():
         tupla = (int(p), int(max), int(min))
         ofertas += tuple([tupla])
 
-    system("cls")
-    print("Acciones en venta ", A)
-    print("Precio minímo por acción ", B)
-    print("Número de oferente ", n)
-    print("Lista de oferentes incluyendo gobierno ", ofertas, "\n")
+    eg.msgbox(msg='Bienvenido al programa para calcular la venta de acciones \nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno: \n' + str(ofertas),
+              title='Programación de venta de acciones',
+              ok_button='Continuar',
+              image="images/dynamic_programming.jpg",)
 
-    algoritmo = int(input(
-        "¿Qué tipo de algoritmo desea utilizar?\n(1) Estrategia de Fuerza Bruta\n(2) Estrategia Voraz\n(3) Estrategia de Programación dinamica\n"))
+    algoritmo = eg.indexbox(msg='¿Qué tipo de algoritmo desea utilizar?',
+                            title='Programación de venta de acciones',
+                            choices=('Estrategia de Fuerza Bruta', 'Estrategia Voraz',
+                                     'Estrategia de Programación dinámica'),
+                            image="images/dynamic_programming.jpg",)
 
-    system("cls")
-    if (algoritmo == 1):
+    # algo = {'Estrategia de Fuerza Bruta': 1, 'Estrategia Voraz': 2,
+    #         'Estrategia de Programación dinámica': 3}
+    # algoritmo = algo.get(algoritmo, 0)
+
+    if (algoritmo == 0):
         fuerzaBruta.accionesFuerzaBruta(A, B, n, ofertas)
-    elif (algoritmo == 2):
+    elif (algoritmo == 1):
         voraz.accionesVoraz(A, B, n, ofertas)
-    elif (algoritmo == 3):
+    elif (algoritmo == 2):
         print("Estrategia de programación dinámica no disponible")
     else:
-        print("Opción no válida")
+        eg.msgbox(msg='Opción no válida',
+                  title='Programación de venta de acciones', ok_button='Continuar')
 
 
 if __name__ == '__main__':
