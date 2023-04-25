@@ -87,4 +87,4 @@ def accionesDinamica(A: int, B: int, n: int, ofertas: tuple):
               title='Programación de venta de acciones',
               ok_button='Continuar',
               image="images/dynamic_programming.jpg",)
-    os.startfile("outputDinamica.txt", operation='open')
+    os.startfile("outputDinamica1.txt", operation='open')
