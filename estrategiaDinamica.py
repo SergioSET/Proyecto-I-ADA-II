@@ -76,14 +76,14 @@ def accionesDinamica(A: int, B: int, n: int, ofertas: tuple):
               title='Programación de venta de acciones',
               ok_button='Continuar',
               image="images/dynamic_programming.jpg",)
-    inicio = time.time()
+    inicio3 = time.time()
     with open("outputDinamica1.txt", 'w') as write_file:
         solucion, valorSolucion = programacionDinamica(A, B, n, ofertas)
         write_file.write("{0}\n".format(valorSolucion))
         for asig in solucion:
             write_file.write("{0}\n".format(asig))
-    fin = time.time()
-    eg.msgbox(msg='Tiempo de ejecución de programación dinámica: ' + str(fin - inicio) + ' segundos\n\nSe ha finalizado el algoritmo de Programación Dinámica, se abrirá el archivo outputDinamica1.txt con la solución encontrada',
+    fin3 = time.time()
+    eg.msgbox(msg='Tiempo de ejecución de programación dinámica: ' + str(fin3 - inicio3) + ' segundos\n\nSe ha finalizado el algoritmo de Programación Dinámica, se abrirá el archivo outputDinamica1.txt con la solución encontrada',
               title='Programación de venta de acciones',
               ok_button='Continuar',
               image="images/dynamic_programming.jpg",)

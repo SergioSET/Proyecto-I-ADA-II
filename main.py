@@ -31,7 +31,7 @@ def main():
     algoritmo = eg.indexbox(msg='Bienvenido al programa para calcular la venta de acciones \n\nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno(limitado a 158 caracteres): \n' + str(ofertas)[0:158] + '\n\nSeleccione el algoritmo a utilizar',
                             title='Programación de venta de acciones',
                             choices=('Estrategia de Fuerza Bruta', 'Estrategia Voraz',
-                                     'Estrategia de Programación dinámica'),
+                                     'Estrategia de Programación dinámica', 'Comparativa 3 algoritmos'),
                             image="images/dynamic_programming.jpg",)
 
     if (algoritmo == 0):
@@ -39,6 +39,10 @@ def main():
     elif (algoritmo == 1):
         voraz.accionesVoraz(A, B, n, ofertas)
     elif (algoritmo == 2):
+        dinamica.accionesDinamica(A, B, n, ofertas)
+    elif (algoritmo == 3):
+        fuerzaBruta.accionesFuerzaBruta(A, B, n, ofertas)
+        voraz.accionesVoraz(A, B, n, ofertas)
         dinamica.accionesDinamica(A, B, n, ofertas)
     else:
         eg.msgbox(msg='Opción no válida',
