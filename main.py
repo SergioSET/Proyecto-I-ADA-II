@@ -13,6 +13,8 @@ def main():
                              multiple=False,
                              )
 
+    print(archivo)
+
     inputTxt = open(archivo, 'r')
 
     A = int(inputTxt.readline())
