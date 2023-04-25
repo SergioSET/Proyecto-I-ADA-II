@@ -1,10 +1,19 @@
-import estrategiaVoraz as voraz
 import estrategiaFuerzaBruta as fuerzaBruta
+import estrategiaVoraz as voraz
+import estrategiaDinamica as dinamica
 import easygui as eg
+from tkinter.filedialog import askopenfilename
 
 
 def main():
-    inputTxt = open("input.txt", 'r')
+    archivo = eg.fileopenbox(msg='Seleccione el archivo de entrada',
+                             title='Programación de venta de acciones',
+                             default="ADAII_ejemplos_bsp2/*.sub",
+                             filetypes=["*.sub", "*.psub"],
+                             multiple=False,
+                             )
+
+    inputTxt = open(archivo, 'r')
 
     A = int(inputTxt.readline())
     B = int(inputTxt.readline())
@@ -17,12 +26,7 @@ def main():
         tupla = (int(p), int(max), int(min))
         ofertas += tuple([tupla])
 
-    eg.msgbox(msg='Bienvenido al programa para calcular la venta de acciones \nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno: \n' + str(ofertas),
-              title='Programación de venta de acciones',
-              ok_button='Continuar',
-              image="images/dynamic_programming.jpg",)
-
-    algoritmo = eg.indexbox(msg='¿Qué tipo de algoritmo desea utilizar?',
+    algoritmo = eg.indexbox(msg='Bienvenido al programa para calcular la venta de acciones \n\nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno(limitado a 158 caracteres): \n' + str(ofertas)[0:158] + '\n\nSeleccione el algoritmo a utilizar',
                             title='Programación de venta de acciones',
                             choices=('Estrategia de Fuerza Bruta', 'Estrategia Voraz',
                                      'Estrategia de Programación dinámica'),
@@ -33,7 +37,7 @@ def main():
     elif (algoritmo == 1):
         voraz.accionesVoraz(A, B, n, ofertas)
     elif (algoritmo == 2):
-        print("Estrategia de programación dinámica no disponible")
+        dinamica.accionesDinamica(A, B, n, ofertas)
     else:
         eg.msgbox(msg='Opción no válida',
                   title='Programación de venta de acciones', ok_button='Continuar')
