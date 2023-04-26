@@ -49,7 +49,7 @@ def estrategiaFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     return soluciones[pos], maxValor
 
 
-def accionesFB(A: int, B: int, n: int, ofertas: tuple):
+def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
     with open("outputFuerzaBruta.txt", 'w') as write_file:
         solucion, valorSolucion = estrategiaFuerzaBruta(A, B, n, ofertas)
         write_file.write("{0}\n".format(valorSolucion))
@@ -57,14 +57,14 @@ def accionesFB(A: int, B: int, n: int, ofertas: tuple):
             write_file.write("{0}\n".format(asig))
 
 
-def accionesFuerzaBruta(A: int, B: int, n: int, ofertas: tuple):
+def accionesFB(A: int, B: int, n: int, ofertas: tuple):
     eg.msgbox(
         msg='Se iniciará el algoritmo de Fuerza Bruta, puede presionar el botón "Continuar", un mensaje aparecerá cuando el algoritmo haya finalizado',
         title='Programación de venta de acciones',
         ok_button='Continuar',
         image="images/dynamic_programming.jpg", )
     inicio1 = time.time()
-    accionesFB(A, B, n, ofertas)
+    accionesFuerzaBruta(A, B, n, ofertas)
     fin1 = time.time()
     eg.msgbox(msg='Tiempo de ejecución del algoritmo Fuerza Bruta: ' + str(
         fin1 - inicio1) + ' segundos\n\nSe ha finalizado el algoritmo de Fuerza Bruta, se abrirá el archivo outputFuerzaBruta.txt con la solución encontrada',

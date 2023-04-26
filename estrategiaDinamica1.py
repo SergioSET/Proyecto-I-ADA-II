@@ -71,7 +71,7 @@ def programacionDinamica(A: int, B: int, n: int, ofertas: tuple):
     return solucion, int(matrizValorSolucion[A-1][n])
 
 
-def accionesDinamica(A: int, B: int, n: int, ofertas: tuple):
+def accionesPD1(A: int, B: int, n: int, ofertas: tuple):
     eg.msgbox(msg='Se iniciará el algoritmo de Programación Dinámica, puede presionar el botón "Continuar", un mensaje aparecerá cuando el algoritmo haya finalizado',
               title='Programación de venta de acciones',
               ok_button='Continuar',

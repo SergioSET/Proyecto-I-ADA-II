@@ -1,6 +1,7 @@
 import estrategiaFuerzaBruta as fuerzaBruta
 import estrategiaVoraz as voraz
-import estrategiaDinamica as dinamica
+import estrategiaDinamica1 as dinamica1
+import estrategiaDinamica2 as dinamica2
 import easygui as eg
 from tkinter.filedialog import askopenfilename
 
@@ -12,8 +13,6 @@ def main():
                              filetypes=["*.sub", "*.psub"],
                              multiple=False,
                              )
-
-    print(archivo)
 
     inputTxt = open(archivo, 'r')
 
@@ -28,24 +27,25 @@ def main():
         tupla = (int(p), int(max), int(min))
         ofertas += tuple([tupla])
 
+    choicesSub = ('Estrategia de Fuerza Bruta', 'Estrategia Voraz',
+                  'Estrategia de Programación dinámica')
+    choicesPsub = ('Estrategia de Programación dinámica modificado',)
+
     algoritmo = eg.indexbox(msg='Bienvenido al programa para calcular la venta de acciones \n\nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno(limitado a 158 caracteres): \n' + str(ofertas)[0:158] + '\n\nSeleccione el algoritmo a utilizar',
                             title='Programación de venta de acciones',
-                            choices=('Estrategia de Fuerza Bruta', 'Estrategia Voraz',
-                                     'Estrategia de Programación dinámica', 'Comparativa 3 algoritmos'),
-                            image="images/dynamic_programming.jpg",)
+                            choices= choicesSub if archivo.endswith('.sub') else choicesPsub,
+                            image = "images/dynamic_programming.jpg",)
 
     if (algoritmo == 0):
-        fuerzaBruta.accionesFuerzaBruta(A, B, n, ofertas)
+        fuerzaBruta.accionesFB(A, B, n, ofertas)
     elif (algoritmo == 1):
-        voraz.accionesVoraz(A, B, n, ofertas)
+        voraz.accionesV(A, B, n, ofertas)
     elif (algoritmo == 2):
-        dinamica.accionesDinamica(A, B, n, ofertas)
+        dinamica1.accionesPD1(A, B, n, ofertas)
     elif (algoritmo == 3):
-        fuerzaBruta.accionesFuerzaBruta(A, B, n, ofertas)
-        voraz.accionesVoraz(A, B, n, ofertas)
-        dinamica.accionesDinamica(A, B, n, ofertas)
+        dinamica2.accionesPD2(A, B, n, ofertas)
     else:
-        eg.msgbox(msg='Opción no válida',
+        eg.msgbox(msg = 'Opción no válida',
                   title='Programación de venta de acciones', ok_button='Continuar')
 
 

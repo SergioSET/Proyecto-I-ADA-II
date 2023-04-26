@@ -52,7 +52,7 @@ def estrategiaVoraz(A: int, B: int, n: int, ofertas: tuple):
         return calculo(A, B, n, ofertas)
 
 
-def accionesVoraz(A: int, B: int, n: int, ofertas: tuple):
+def accionesV(A: int, B: int, n: int, ofertas: tuple):
     eg.msgbox(msg='Se iniciará el algoritmo de Estrategia Voraz, puede presionar el botón "Continuar", un mensaje aparecerá cuando el algoritmo haya finalizado',
               title='Programación de venta de acciones',
               ok_button='Continuar',
