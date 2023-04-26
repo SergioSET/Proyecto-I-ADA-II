@@ -30,19 +30,19 @@ def main():
                   'Estrategia de Programación dinámica')
     choicesPsub = ('Estrategia de Programación dinámica modificado',)
 
-    algoritmo = eg.indexbox(msg='Bienvenido al programa para calcular la venta de acciones \n\nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno (limitado a 158 caracteres): \n' + str(ofertas)[0:158] + '\n\nSeleccione el algoritmo a utilizar',
+    algoritmo = eg.buttonbox(msg='Bienvenido al programa para calcular la venta de acciones \n\nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno (limitado a 158 caracteres): \n' + str(ofertas)[0:158] + '\n\nSeleccione el algoritmo a utilizar',
                             title='Programación de venta de acciones',
                             choices=choicesSub if archivo.endswith(
                                 '.sub') else choicesPsub,
                             image="images/dynamic_programming.jpg",)
 
-    if (algoritmo == 0):
+    if (algoritmo == 'Estrategia de Fuerza Bruta'):
         fuerzaBruta.accionesFB(A, B, n, ofertas)
-    elif (algoritmo == 1):
+    elif (algoritmo == 'Estrategia Voraz'):
         voraz.accionesV(A, B, n, ofertas)
-    elif (algoritmo == 2):
+    elif (algoritmo == 'Estrategia de Programación dinámica'):
         dinamica1.accionesPD1(A, B, n, ofertas)
-    elif (algoritmo == 3):
+    elif (algoritmo == 'Estrategia de Programación dinámica modificado'):
         dinamica2.accionesPD2(A, B, n, ofertas)
     else:
         eg.msgbox(msg='Opción no válida',
