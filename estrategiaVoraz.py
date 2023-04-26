@@ -64,7 +64,7 @@ def accionesV(A: int, B: int, n: int, ofertas: tuple):
         for asig in solucion:
             write_file.write("{0}\n".format(asig))
     fin2 = time.time()
-    eg.msgbox(msg='Tiempo de ejecución del algoritmo voraz: ' + str(fin2 - inicio2) + ' segundos\n\nSe ha finalizado el algoritmo de Estrategia Voraz, se abrirá el archivo outputVoraz.txt con la solución encontrada',
+    eg.msgbox(msg='Tiempo de ejecución del algoritmo voraz: ' + str(fin2 - inicio2) + ' segundos\n\nValor de la solución: ' + str(valorSolucion) + '\n\nSe ha finalizado el algoritmo de Estrategia Voraz, se abrirá el archivo outputVoraz.txt con la solución encontrada',
               title='Programación de venta de acciones',
               ok_button='Continuar',
               image="images/dynamic_programming.jpg",)
