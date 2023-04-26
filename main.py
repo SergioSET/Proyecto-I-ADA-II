@@ -3,7 +3,6 @@ import estrategiaVoraz as voraz
 import estrategiaDinamica1 as dinamica1
 import estrategiaDinamica2 as dinamica2
 import easygui as eg
-from tkinter.filedialog import askopenfilename
 
 
 def main():
@@ -33,8 +32,9 @@ def main():
 
     algoritmo = eg.indexbox(msg='Bienvenido al programa para calcular la venta de acciones \n\nAcciones en venta: ' + str(A) + '\nPrecio minímo por acción: ' + str(B) + '\nNúmero de oferentes: ' + str(n) + '\nLista de oferentes incluyendo gobierno(limitado a 158 caracteres): \n' + str(ofertas)[0:158] + '\n\nSeleccione el algoritmo a utilizar',
                             title='Programación de venta de acciones',
-                            choices= choicesSub if archivo.endswith('.sub') else choicesPsub,
-                            image = "images/dynamic_programming.jpg",)
+                            choices=choicesSub if archivo.endswith(
+                                '.sub') else choicesPsub,
+                            image="images/dynamic_programming.jpg",)
 
     if (algoritmo == 0):
         fuerzaBruta.accionesFB(A, B, n, ofertas)
@@ -45,7 +45,7 @@ def main():
     elif (algoritmo == 3):
         dinamica2.accionesPD2(A, B, n, ofertas)
     else:
-        eg.msgbox(msg = 'Opción no válida',
+        eg.msgbox(msg='Opción no válida',
                   title='Programación de venta de acciones', ok_button='Continuar')
 
 

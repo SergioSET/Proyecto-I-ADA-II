@@ -1,8 +1,6 @@
 import os
 import time
-
 import easygui as eg
-
 from main import *
 
 if __name__ == '__main__':
