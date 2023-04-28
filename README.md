@@ -24,3 +24,5 @@ Por último, si desea volver a ejecutar el programa solo debe colocar el siguiet
 ```
 python3 main.py
 ```
+
+nota: Es importante notar que sí ejecuta el programa en un sistema diferente de Windows es probable que la imagen de la interfaz gráfica no se muestre correctamente, cabe resaltar que es recomendable no presionar la imagen, ya que podría dar entradas erróneas al código.
